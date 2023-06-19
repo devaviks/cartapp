@@ -13,7 +13,6 @@ import jakarta.persistence.TemporalType;
 @MappedSuperclass
 abstract public class CommonEntity {
 
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;

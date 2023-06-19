@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class SellarsAPI {
-	
-	@Autowired
-	private SerllarServices serllarServices;
-	
-	  @GetMapping("/allSellars")
-	  @ResponseBody public List<Sellars> getAllSellarsWithRegion() {
-		  return serllarServices.getALlEmployeebyRegion(); 
-	  }
+
+    @Autowired
+    private SerllarServices serllarServices;
+
+    @GetMapping("/allSellars")
+    @ResponseBody
+    public List<Sellars> getAllSellarsWithRegion() {
+        return serllarServices.getALlEmployeebyRegion();
+    }
 
 }
