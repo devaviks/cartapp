@@ -36,7 +36,7 @@ public class SellarsController {
 	@Autowired
 	private SerllarServices serllarServices;
 
-	@GetMapping("addSellarsForm")
+	@GetMapping("sellarsaddForm")
 	public String sellars(Model model) {
 		List<Country> coutriesList = countryServices.getAllCountries();
 		model.addAttribute("coutriesList", coutriesList);
