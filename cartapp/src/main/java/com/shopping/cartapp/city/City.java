@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.shopping.cartapp.sellars.Sellars;
 import com.shopping.cartapp.state.State;
@@ -18,7 +19,7 @@ import jakarta.persistence.OneToMany;
 import model.CommonEntity;
 
 @Entity(name = "tbl_city")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class City extends CommonEntity {
 
 	String cityName;
