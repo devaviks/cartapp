@@ -6,17 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import model.CommonEntity;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Token {
-
-  @Id
-  @GeneratedValue
-  public Integer id;
+public class Token extends CommonEntity {
 
   @Column(unique = true)
   public String token;
@@ -27,6 +24,9 @@ public class Token {
   public boolean revoked;
 
   public boolean expired;
+
+  @Column(unique = true)
+  public String deviceToken;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_id")
