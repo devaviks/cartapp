@@ -33,7 +33,7 @@ abstract public class CommonEntity {
 
 	@JsonIgnore
 	@Column(name = "deviceType")
-	private String deviceType;
+	private String deviceType = "Admin";
 
 	@JsonIgnore
 	@Column(name = "macAddress")

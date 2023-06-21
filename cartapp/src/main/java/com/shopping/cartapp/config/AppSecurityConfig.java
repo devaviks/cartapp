@@ -14,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import static com.shopping.cartapp.config.user.Role.ADMIN;
 import static com.shopping.cartapp.config.user.Role.MANAGER;
@@ -37,6 +38,7 @@ public class AppSecurityConfig {
                 .requestMatchers(
                         "/api/v1/auth/register",
                         "/api/v1/auth/**",
+                       // "/api/v1/user/allUsers",
                         "/sellars**",
                         "/parameters**",
                         "/parameters/country/countries",
@@ -55,7 +57,8 @@ public class AppSecurityConfig {
                         "/webjars/**",
                         "/swagger-resources",
                         "/swagger-resources/**",
-                        "/swagger-ui.html"
+                        "/swagger-ui.html",
+                        "/v3/api-docs/**"
                 )
                 .permitAll()
                //.requestMatchers("/sellars**").hasAnyRole(ADMIN.name(), MANAGER.name())
