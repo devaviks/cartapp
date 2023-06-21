@@ -4,11 +4,21 @@ import com.shopping.cartapp.config.auth.AuthenticationService;
 import com.shopping.cartapp.config.auth.RegisterRequest;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import static com.shopping.cartapp.config.user.Role.ADMIN;
 import static com.shopping.cartapp.config.user.Role.MANAGER;
+
+
 
 @SpringBootApplication
 public class CartappApplication {
@@ -16,29 +26,5 @@ public class CartappApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CartappApplication.class, args);
 		System.out.println("Shopping Cart Running");
-	}
-
-	@Bean
-	public CommandLineRunner commandLineRunner(
-			AuthenticationService service
-	) {
-		return args -> {
-			var admin = RegisterRequest.builder()
-					.firstname("Admin")
-					.lastname("Admin")
-					.email("admin@mail.com")
-					.password("password")
-					.role(ADMIN)
-					.build();
-			System.out.println("Admin token: " + service.register(admin).getAccessToken());
-
-			var manager = RegisterRequest.builder()
-					.firstname("Admin")
-					.lastname("Admin")
-					.email("manager@mail.com")
-					.password("password")
-					.role(MANAGER)
-					.build();
-			System.out.println("Manager token: " + service.register(manager).getAccessToken());};
 	}
 }
